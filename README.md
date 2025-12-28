@@ -1,16 +1,43 @@
-# React + Vite
+## This porject just api learning.......
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌟🌟🌟 Product Details
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+[
+  {
+    "name": "Nvidia GeForce RTX 4090",
+    "description": "Debitis nihil fugiat dolores. Omnis fugit nostrum sed sint mollitia assumenda vero et eos accusamus.",
+    "price": "1599",
+    "image": "https://i.ibb.co/XMyrFv5/Nvidia-Ge-Force-RTX-4090.jpg",
+    "category": "Graphics Cards"
+  },
+  {
+    "name": "Ultra-Wide Curved Gaming Monitor",
+    "description": "Omnis fugit nostrum sed sint mollitia assumenda vero et eos accusamus. Debitis nihil fugiat dolores.",
+    "price": "850",
+    "image": "https://i.ibb.co/JjftqDKm/Ultra-Wide-Curved-Gaming-Monitor.jpg",
+    "category": "Monitors"
+  },
+  {
+    "name": "Mechanical RGB Gaming Keyboard",
+    "description": "Sint mollitia assumenda vero et eos accusamus. Debitis nihil fugiat dolores omnis fugit nostrum.",
+    "price": "129",
+    "image": "https://i.ibb.co/Y4PHkmwd/Mechanical-RGB-Gaming-Keyboard.jpg",
+    "category": "Keyboards"
+  },
+  {
+    "name": "High-Fidelity Wireless Gaming Headset",
+    "description": "Vero et eos accusamus. Debitis nihil fugiat dolores omnis fugit nostrum sed sint mollitia.",
+    "price": "199",
+    "image": "http://googleusercontent.com/image_collection/image_retrieval/3139451035658182626_3",
+    "category": "Audio"
+  },
+  {
+    "name": "Full Tower ATX Gaming Case",
+    "description": "Accusamus debitis nihil fugiat dolores omnis fugit nostrum sed sint mollitia assumenda vero.",
+    "price": "175",
+    "image": "http://googleusercontent.com/image_collection/image_retrieval/3139451035658182626_4",
+    "category": "Cases"
+  }
+]
+```

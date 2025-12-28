@@ -7,6 +7,9 @@ const AddProduct = () => {
     const price = e.target.price.value;
     const image = e.target.image.value;
 
+
+    
+
     console.log("Form Data Submitted:", {
       username,
       email,
