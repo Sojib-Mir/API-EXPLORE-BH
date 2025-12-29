@@ -2,6 +2,13 @@
 
 🌟🌟🌟 Product Details
 
+Install SweetAlert2 Command
+
+```bash
+npm install sweetalert2
+```
+
+
 ```bash
 [
   {
