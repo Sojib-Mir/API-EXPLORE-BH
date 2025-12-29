@@ -1,5 +1,7 @@
+import { Link } from "react-router";
+
 const MyProductCard = ({ product }) => {
-  const { name, image, description, price } = product;
+  const { name, image, description, price, _id } = product;
 
   return (
     <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full">
@@ -29,9 +31,12 @@ const MyProductCard = ({ product }) => {
 
         {/* বাটন সেকশন */}
         <div className="flex items-center justify-between mt-auto">
-          <button className="bg-slate-800 hover:bg-pink-600 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-colors duration-300 w-full shadow-md">
+          <Link
+            to={`/product-details/${_id}`}
+            className="bg-slate-800 hover:bg-pink-600 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-colors duration-300 w-full shadow-md text-center"
+          >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>

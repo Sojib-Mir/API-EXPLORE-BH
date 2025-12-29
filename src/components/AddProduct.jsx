@@ -1,22 +1,65 @@
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { auth } from "../firebase/firebase";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
+
 const AddProduct = () => {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const username = e.target.username.value;
-    const email = e.target.email.value;
-    const title = e.target.title.value;
+    const name = e.target.title.value;
     const price = e.target.price.value;
     const image = e.target.image.value;
+    const category = e.target.category.value;
+    const description = e.target.description.value;
 
-
-    
-
-    console.log("Form Data Submitted:", {
-      username,
-      email,
-      title,
+    const newData = {
+      managerName: user?.displayName,
+      managerEmail: user?.email,
+      name,
       price,
       image,
-    });
+      category,
+      description,
+      createAt: new Date().toISOString(),
+    };
+    console.log("Form Data Submitted:", newData);
+
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newData),
+    })
+      .then((res) => res.json())
+
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your product added successful!.",
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        navigate("/my-product");
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
   };
 
   return (
@@ -37,7 +80,7 @@ const AddProduct = () => {
             className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
               focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-black"
             placeholder="johndoe"
-            defaultValue={"PriMe"}
+            defaultValue={user?.displayName}
             required
             readOnly
           />
@@ -54,7 +97,7 @@ const AddProduct = () => {
             className="mt-1 block text-black  w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
               focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
             placeholder="you@example.com"
-            defaultValue={"byteprime2025@gmail.com"}
+            defaultValue={user?.email}
             required
             readOnly
           />
@@ -73,6 +116,43 @@ const AddProduct = () => {
             placeholder="Vintage Camera"
             required
           />
+        </div>
+
+        {/* Product Category Dropdown */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Product Category
+          </label>
+          <select
+            name="category"
+            className="mt-1 block text-black w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+            required
+          >
+            <option value="">Select a Category</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Home Decor">Home Decor</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Beauty">Health & Beauty</option>
+            <option value="Sports">Sports & Outdoors</option>
+          </select>
+        </div>
+
+        {/* Description */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Product Description
+          </label>
+          <textarea
+            type="text"
+            name="description"
+            className="mt-1 text-black block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
+              focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 "
+            cols="30"
+            rows="5"
+            placeholder="Product Descripton here"
+            step="0.01"
+            required
+          ></textarea>
         </div>
 
         {/* Price */}
