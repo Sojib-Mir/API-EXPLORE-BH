@@ -53,7 +53,7 @@ const AddProduct = () => {
           icon: "success",
           title: "Your product added successful!.",
           showConfirmButton: false,
-          timer: 2500,
+          timer: 1000,
         });
         navigate("/my-product");
       })
@@ -132,6 +132,7 @@ const AddProduct = () => {
             <option value="Electronics">Electronics</option>
             <option value="Home Decor">Home Decor</option>
             <option value="Fashion">Fashion</option>
+            <option value="Internet">Internet</option>
             <option value="Beauty">Health & Beauty</option>
             <option value="Sports">Sports & Outdoors</option>
           </select>
