@@ -53,11 +53,16 @@ const Navbar = () => {
                 <NavLink to="/profile">Profile</NavLink>
               </li>
               <li>
-                <NavLink to="/add-product">Add Product</NavLink>
+                <NavLink to="/products">Products</NavLink>
               </li>
               <li>
-                <NavLink to="/my-product">My Product</NavLink>
+                <NavLink to="/add-product">Add Product</NavLink>
               </li>
+
+              <li>
+                <NavLink to={`/my-products/${user?.email}`}>Dashboard</NavLink>
+              </li>
+              
             </>
           ) : (
             <>

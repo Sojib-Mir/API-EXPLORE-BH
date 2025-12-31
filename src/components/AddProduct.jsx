@@ -34,7 +34,7 @@ const AddProduct = () => {
       image,
       category,
       description,
-      createAt: new Date().toISOString(),
+      createdAt: new Date(),
     };
     console.log("Form Data Submitted:", newData);
 
@@ -55,10 +55,11 @@ const AddProduct = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        navigate("/my-product");
+        navigate("/products");
       })
       .catch((err) => {
         toast.error(err);
+        alert(err)
       });
   };
 

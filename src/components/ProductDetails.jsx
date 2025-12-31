@@ -4,9 +4,6 @@ const ProductDetails = () => {
   const data = useLoaderData();
   const navigate = useNavigate();
 
-
-  
-
   // Data destructuring
   const { name, description, price, image, category } = data || {};
 

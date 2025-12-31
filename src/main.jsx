@@ -11,16 +11,23 @@ import Register from "./components/Register";
 import Profile from "./components/Profile";
 import AddProduct from "./components/AddProduct";
 import MyProduct from "./components/MyProduct";
-import Loading from "./components/Loading";
 import ProductDetails from "./components/ProductDetails";
+
+import MyProductManage from "./components/MyProductManage";
+import Loading from "./components/Loading";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    hydrateFallbackElement: <p>Loading....</p>,
+    hydrateFallbackElement: <Loading />,
     children: [
-      { index: true, Component: Home },
+      {
+        index: true,
+        Component: Home,
+        loader: () => fetch("http://localhost:5000/recent-products"),
+      },
+
       { path: "/login", Component: Login },
       { path: "/register", Component: Register },
       { path: "/profile", Component: Profile },
@@ -31,7 +38,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/my-product",
+        path: "/products",
         Component: MyProduct,
         loader: () => fetch("http://localhost:5000/products"),
       },
@@ -39,16 +46,23 @@ const router = createBrowserRouter([
       {
         path: "/product-details/:id",
         Component: ProductDetails,
-        loader: ({params}) =>
+        loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
+      },
+
+      {
+        path: "/my-products/:email",
+        Component: MyProductManage,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/my-products/${params.email}`),
       },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <div>
     <RouterProvider router={router} />
     <ToastContainer />
-  </StrictMode>
+  </div>
 );
